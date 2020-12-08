@@ -1,0 +1,17 @@
+<h1>Simple Angular Weather ChatBot.</h1>
+  <div class="container">
+    <div class="chatHead">
+      <p class="name">Coda Weather ChatBot</p>
+    </div>
+    <div class="chatHolder">
+        <ng-container *ngFor="let message of messages | async">
+            <div [ngClass]="{ 'message-bot' : message.sentBy === 'bot',
+                              'message-user' : message.sentBy === 'user'}">
+                             <span [innerHtml]="message.content"></span>             
+                            </div>
+          </ng-container>
+    </div>
+    <div class="input-container">
+      <input class="input" size="35" type="text" placeholder="Enter place name..." [(ngModel)]="formValue" (keyup.enter)="getWeather()"/>
+    </div>
+  </div>
